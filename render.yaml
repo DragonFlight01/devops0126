@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: devops0126
+    env: php
+    preDeploy:
+      - php artisan migrate --force
