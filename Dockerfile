@@ -66,3 +66,10 @@ RUN composer install --optimize-autoloader --no-dev \
 # Zet de juiste rechten voor laravel oplsag en cache
 RUN chown -R www-data:www-data /var/www/html \
  && chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
+
+ # Copy custom entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Start container using our script
+ENTRYPOINT ["/entrypoint.sh"]
