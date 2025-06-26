@@ -31,7 +31,8 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libonig-dev \
     libzip-dev \
-    libxml2-dev
+    libxml2-dev \
+    libpq-dev
 
 # Installeer PHP extensies voor Laravel en algemene functionaliteiten
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
