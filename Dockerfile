@@ -53,7 +53,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
  && npm -v && node -v
 
 # Kopieer de applicatie bestanden naar de container
-COPY www/ /var/www/html/
+COPY / /var/www/html/
 
 # Zet de werkdirectory voor npm
 WORKDIR /var/www/html
@@ -61,7 +61,7 @@ WORKDIR /var/www/html
 # Compileer de frontend assets met npm
 RUN composer install --optimize-autoloader --no-dev \
  && npm install \
- && npm run build   
+ && npm run build
 
 # Zet de juiste rechten voor laravel oplsag en cache
 RUN chown -R www-data:www-data /var/www/html \
