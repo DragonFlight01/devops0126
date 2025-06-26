@@ -8,8 +8,8 @@ echo "Running migrations..."
 php artisan migrate --force
 
 # Seed the database
-echo "Seeding database..."
-php artisan db:seed --force
+#echo "Seeding database..."
+#php artisan db:seed --force
 
 # Start Apache in foreground
 echo "Starting Apache..."
