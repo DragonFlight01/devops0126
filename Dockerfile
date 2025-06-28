@@ -56,7 +56,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
  && npm -v && node -v
 
 # Kopieer de applicatie bestanden naar de container
-COPY ./www/ /var/www/html/
+COPY . /var/www/html/
 
 # Zet de werkdirectory voor npm en composer
 WORKDIR /var/www/html
