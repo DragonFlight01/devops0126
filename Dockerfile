@@ -56,9 +56,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
  && npm -v && node -v
 
 # Kopieer de applicatie bestanden naar de container
-COPY / /var/www/html/
+COPY ./www/ /var/www/html/
 
-# Zet de werkdirectory voor npm
+# Zet de werkdirectory voor npm en composer
 WORKDIR /var/www/html
 
 # Compileer de frontend assets met npm
@@ -66,13 +66,6 @@ RUN composer install --optimize-autoloader --no-dev \
  && npm install \
  && npm run build
 
-# Zet de juiste rechten voor laravel oplsag en cache
+# Zet de juiste rechten voor laravel opslag en cache
 RUN chown -R www-data:www-data /var/www/html \
  && chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
-
- # Copy custom entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-# Start container using our script
-ENTRYPOINT ["/entrypoint.sh"]
